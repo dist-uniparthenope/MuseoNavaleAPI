@@ -5,7 +5,7 @@ from marshmallow import post_dump
 import werkzeug
 import os
 import tempfile
-
+from flask import send_file
 
 
 app = Flask(__name__)
@@ -35,12 +35,10 @@ class info(Resource):
     def get(self):
 
         return {'status': 'Done'}
-		
-@api.route('/boundle', methods=['GET'])
+
+@app.route('/boundle', methods=['GET'])
 def return_file():
-      return send_file('./file', as_attachment=True, attachment_filename="boundle.zip")
-
-
+          return send_file('./file/boundle.zip', as_attachment=True, attachment_filename="boundle.zip")
 
 if __name__ == '__main__':
     app.run()
