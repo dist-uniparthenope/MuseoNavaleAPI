@@ -35,7 +35,10 @@ class info(Resource):
     def get(self):
 
         return {'status': 'Done'}
-
+		
+@api.route('/boundle', methods=['GET'])
+def return_file():
+      return send_file('./file', as_attachment=True, attachment_filename="boundle.zip")
 
 
 
