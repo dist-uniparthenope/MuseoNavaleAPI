@@ -16,9 +16,9 @@ contt2 = 0
 contt3 = 0
 contt4 = 0
 
-path_home = "/opt/MuseoNavaleAPI/file/MuseoNavale"
-path_images = "/opt/MuseoNavaleAPI/file/MuseoNavale/images"
-path_audio = "/opt/MuseoNavaleAPI/file/MuseoNavale/audio"
+path_home = "/opt/MuseoNavaleAPI/MuseoNavaleAPI/file/MuseoNavale"
+path_images = "/opt/MuseoNavaleAPI/MuseoNavaleAPI/file/MuseoNavale/images"
+path_audio = "/opt/MuseoNavaleAPI/MuseoNavaleAPI/file/MuseoNavale/audio"
 
 try:
 	os.mkdir(path_home)
@@ -129,44 +129,53 @@ for i in range(0, len(_json)):
 
 		if _json[i]['field_room'] != "":
 			if(_json[i]['field_room'] == "Stanza1"):
-				j = 0;
+				j = 0
 				cont1 = cont1 + 1
-			elif (_json[i]['field_room'] == "Stanza9"):
-				j = 1
+                        elif _json[i]['field_room'] == "Stanza2":
+                                j = 1
 				cont2 = cont2 + 1
-		
-		
-			if cont1 == 1:
-				rooms.append({
-					"hall": _json[i]['field_room'],
-					"items" : []
-				})
+                        elif _json[i]['field_room'] == "Stanza3":
+                                j = 2
+                                cont3 = cont3 + 1
+
+	                if cont1 == 1:
+    			    rooms.append({	
+                                "hall": _json[i]['field_room'],
+		                "items" : []
+			    })
 			
-			if cont2 == 1:
-				rooms.append({
-					"hall": _json[i]['field_room'],
-					"items" : []
-				})
+		        if cont2 == 1:
+			    rooms.append({
+			    	"hall": _json[i]['field_room'],
+			    	"items" : []
+                            })
+
+                        if cont3 == 1:
+                            rooms.append({
+                                "hall" : _json[i]['field_room'],
+                                "items" : []
+                            })
 			
-			rooms[j]["items"].append({
-				'nid': _json[i]['nid'],
-				'title':str(_json[i]['title']),
-				'body':str(_json[i]['body']),
-				'field_other_image': img_temp_string,
-				'field_placing': _json[i]['field_placing'],
-		    		'field_model_value':_json[i]['field_model_value'],
-		    		'field_inventory': _json[i]['field_inventory'],
-		    		'field_model_actual_value': _json[i]['field_model_actual_value'],
-		    		'field_inventory_old': _json[i]['field_inventory_old'],
-		    		'field_year': _json[i]['field_year'],
-		    		'field_status': _json[i]['field_status'],
-		    		'field_estimation': _json[i]['field_estimation'],
-		   		'field_exposed': _json[i]['field_exposed'],
-		    		'field_inventory_1': _json[i]['field_inventory_1'],
-		    		'field_vertical_exposition': _json[i]['field_vertical_exposition'],
-				'field_image': img_string,
-				'field_audio':audio_string
-			})
+		        rooms[j]["items"].append({
+	    		    'nid': _json[i]['nid'],
+	    		    'title':str(_json[i]['title']),
+	    		    'body':str(_json[i]['body']),
+	    		    'field_other_image': img_temp_string,
+	    		    'field_placing': _json[i]['field_placing'],
+	    		    'field_model_value':_json[i]['field_model_value'],
+	    		    'field_inventory': _json[i]['field_inventory'],
+	       		    'field_model_actual_value': _json[i]['field_model_actual_value'],
+        		    'field_inventory_old': _json[i]['field_inventory_old'],
+    	    		    'field_year': _json[i]['field_year'],
+	       		    'field_status': _json[i]['field_status'],
+		    	    'field_estimation': _json[i]['field_estimation'],
+		    	    'field_exposed': _json[i]['field_exposed'],
+		    	    'field_inventory_1': _json[i]['field_inventory_1'],
+		    	    'field_vertical_exposition': _json[i]['field_vertical_exposition'],
+	        	    'field_image': img_string,
+		    	    'field_audio':audio_string,
+                            'field_number_tour' : _json[i]['field_tour_complete_number']
+	    	    })
 		
 		if _json[i]['field_tours'] != "":
 			if(_json[i]['field_tours'] == "Complete"):
@@ -297,10 +306,11 @@ with open(path_home + "/file.json", 'w') as outputfile:
 	json.dump(data, outputfile)
 	
 	
-zf = zipfile.ZipFile("/opt/MuseoNavaleAPI/file/boundle.zip", "w")
+zf = zipfile.ZipFile("/opt/MuseoNavaleAPI/MuseoNavaleAPI/file/boundle.zip", "w")
 for dirname, subdirs, files in os.walk('file/MuseoNavale/'):
 	zf.write(dirname)
 	for filename in files:
 		zf.write(os.path.join(dirname, filename))
 zf.close()
 
+import requests
