@@ -7,9 +7,7 @@ import os
 import tempfile
 from flask import send_file
 
-
 app = Flask(__name__)
-
 
 class BaseConfig(object):
     DATA_FOLDER="data_folder"
@@ -27,18 +25,24 @@ def configure_app(app):
 
 configure_app(app)
 
-
 api = Api(app)
 
 @api.route('/info')
 class info(Resource):
     def get(self):
-
         return {'status': 'Done'}
 
 @app.route('/boundle', methods=['GET'])
 def return_file():
-          return send_file('./file/boundle.zip', as_attachment=True, attachment_filename="boundle.zip")
+    return send_file('./file/boundle.zip', as_attachment=True, attachment_filename="boundle.zip")
+
+@api.route('/version', methods=['GET'])
+class version(Resource):
+    def get(self):
+        contents = ""
+        f = open('version.txt', 'r')
+        contents = f.read().splitlines()
+        return {'version' : contents[0]}
 
 if __name__ == '__main__':
     app.run()

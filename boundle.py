@@ -16,9 +16,9 @@ contt2 = 0
 contt3 = 0
 contt4 = 0
 
-path_home = "./file/MuseoNavale"
-path_images = "./file/MuseoNavale/images"
-path_audio = "./file/MuseoNavale/audio"
+path_home = "/opt/MuseoNavaleAPI/file/MuseoNavale"
+path_images = "/opt/MuseoNavaleAPI/file/MuseoNavale/images"
+path_audio = "/opt/MuseoNavaleAPI/file/MuseoNavale/audio"
 
 try:
 	os.mkdir(path_home)
@@ -298,16 +298,27 @@ orari[6]["orari"].append({
 
 data['orari'] = orari
 data['rooms'] = rooms
-data['tours'] = tours	
-	
+data['tours'] = tours
+
+f = open("version.txt", "r")
+contents = f.read().splitlines()
+version = contents[0]
+new_version = int(version) + 1
+f.close()
+f = open("version.txt", "w")
+f.write(str(new_version))
+f.close()
+
+data['version'] = new_version
 			
 with open(path_home + "/file.json", 'w') as outputfile:
 	json.dump(data, outputfile)
 	
 	
-zf = zipfile.ZipFile("boundle.zip", "w")
+zf = zipfile.ZipFile("/opt/MuseoNavaleAPI/file/boundle.zip", "w")
 for dirname, subdirs, files in os.walk("MuseoNavale/"):
 	zf.write(dirname)
 	for filename in files:
 		zf.write(os.path.join(dirname, filename))
 zf.close()
+
