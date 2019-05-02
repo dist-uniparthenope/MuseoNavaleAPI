@@ -316,7 +316,7 @@ with open(path_home + "/file.json", 'w') as outputfile:
 	
 	
 zf = zipfile.ZipFile("/opt/MuseoNavaleAPI/file/boundle.zip", "w")
-for dirname, subdirs, files in os.walk("MuseoNavale/"):
+for dirname, subdirs, files in os.walk('file/MuseoNavale/'):
 	zf.write(dirname)
 	for filename in files:
 		zf.write(os.path.join(dirname, filename))
