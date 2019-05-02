@@ -11,6 +11,11 @@ cont1 = 0
 cont2 = 0
 cont3 = 0
 cont4 = 0
+cont5 = 0
+cont6 = 0
+cont7 = 0
+cont8 = 0
+cont9 = 0
 contt1 = 0
 contt2 = 0
 contt3 = 0
@@ -131,30 +136,91 @@ for i in range(0, len(_json)):
 			if(_json[i]['field_room'] == "Stanza1"):
 				j = 0
 				cont1 = cont1 + 1
-                        elif _json[i]['field_room'] == "Stanza2":
-                                j = 1
+            
+			elif _json[i]['field_room'] == "Stanza2":
+                j = 1
 				cont2 = cont2 + 1
-                        elif _json[i]['field_room'] == "Stanza3":
-                                j = 2
-                                cont3 = cont3 + 1
+				
+            elif _json[i]['field_room'] == "Stanza3":
+				j = 2
+				cont3 = cont3 + 1
+				
+			elif(_json[i]['field_room'] == "Stanza4"):
+				j = 3
+				cont4 = cont4 + 3
+            
+			elif _json[i]['field_room'] == "Stanza5":
+                j = 4
+				cont5 = cont5 + 1
+				
+            elif _json[i]['field_room'] == "Stanza6":
+				j = 5
+				cont6 = cont6 + 1
+				
+			elif(_json[i]['field_room'] == "Stanza7"):
+				j = 6
+				cont7 = cont7 + 1
+            
+			elif _json[i]['field_room'] == "Stanza8":
+                j = 7
+				cont8 = cont8 + 1
+            elif _json[i]['field_room'] == "Stanza9":
+				j = 8
+				cont9 = cont9 + 1
 
-	                if cont1 == 1:
+	        if cont1 == 1:
     			    rooms.append({	
-                                "hall": _json[i]['field_room'],
+                        "hall": _json[i]['field_room'],
 		                "items" : []
-			    })
+					})
 			
-		        if cont2 == 1:
-			    rooms.append({
-			    	"hall": _json[i]['field_room'],
-			    	"items" : []
-                            })
-
-                        if cont3 == 1:
-                            rooms.append({
-                                "hall" : _json[i]['field_room'],
-                                "items" : []
-                            })
+			if cont2 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+					
+			if cont3 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+					
+			if cont4 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+			
+			if cont5 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+					
+			if cont6 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+			
+			if cont7 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+			
+			if cont8 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
+					
+			if cont9 == 1:
+    			    rooms.append({	
+                        "hall": _json[i]['field_room'],
+		                "items" : []
+					})
 			
 		        rooms[j]["items"].append({
 	    		    'nid': _json[i]['nid'],
