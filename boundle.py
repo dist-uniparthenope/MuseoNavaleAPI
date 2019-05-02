@@ -138,10 +138,10 @@ for i in range(0, len(_json)):
 				cont1 = cont1 + 1
             
 			elif _json[i]['field_room'] == "Stanza2":
-                j = 1
+                                j = 1
 				cont2 = cont2 + 1
 				
-            elif _json[i]['field_room'] == "Stanza3":
+                        elif _json[i]['field_room'] == "Stanza3":
 				j = 2
 				cont3 = cont3 + 1
 				
@@ -150,10 +150,10 @@ for i in range(0, len(_json)):
 				cont4 = cont4 + 3
             
 			elif _json[i]['field_room'] == "Stanza5":
-                j = 4
+                                j = 4
 				cont5 = cont5 + 1
 				
-            elif _json[i]['field_room'] == "Stanza6":
+                        elif _json[i]['field_room'] == "Stanza6":
 				j = 5
 				cont6 = cont6 + 1
 				
@@ -162,13 +162,14 @@ for i in range(0, len(_json)):
 				cont7 = cont7 + 1
             
 			elif _json[i]['field_room'] == "Stanza8":
-                j = 7
+                                j = 7
 				cont8 = cont8 + 1
-            elif _json[i]['field_room'] == "Stanza9":
+            
+                        elif _json[i]['field_room'] == "Stanza9":
 				j = 8
 				cont9 = cont9 + 1
 
-	        if cont1 == 1:
+	                if cont1 == 1:
     			    rooms.append({	
                         "hall": _json[i]['field_room'],
 		                "items" : []
