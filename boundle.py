@@ -302,7 +302,7 @@ orari.append({
 })
 
 orari[0]["orari"].append({
-    "apertira" : "9",
+    "apertura" : "9",
     "chiusura" : "17"
 })
 
