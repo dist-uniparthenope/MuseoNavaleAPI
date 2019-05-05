@@ -297,10 +297,21 @@ for i in range(0, len(_json)):
 orari = []
 
 orari.append({
+    "giorno" : "Domenica",
+    "orari" : []
+})
+
+orari[0]["orari"].append({
+    "apertira" : "9",
+    "chiusura" : "17"
+})
+
+
+orari.append({
 	"giorno": "Lunedi",
 	"orari" : []
 })
-orari[0]["orari"].append({
+orari[1]["orari"].append({
 	"apertura" : "9",
 	"chiusura" : "17"
 })
@@ -308,7 +319,7 @@ orari.append({
 	"giorno": "Martedi",
 	"orari" : []
 })
-orari[1]["orari"].append({
+orari[2]["orari"].append({
 	"apertura" : "N/A",
 	"chiusura" : "N/A"
 })
@@ -316,7 +327,7 @@ orari.append({
 	"giorno": "Mercoledi",
 	"orari" : []
 })
-orari[2]["orari"].append({
+orari[3]["orari"].append({
 	"apertura" : "9",
 	"chiusura" : "17"
 })
@@ -324,7 +335,7 @@ orari.append({
 	"giorno": "Giovedi",
 	"orari" : []
 })
-orari[3]["orari"].append({
+orari[4]["orari"].append({
 	"apertura" : "N/A",
 	"chiusura" : "N/A"
 })
@@ -332,20 +343,12 @@ orari.append({
 	"giorno": "Venerdi",
 	"orari" : []
 })
-orari[4]["orari"].append({
-	"apertura" : "9",
-	"chiusura" : "17"
-})
-orari.append({
-	"giorno": "Sabato",
-	"orari" : []
-})
 orari[5]["orari"].append({
 	"apertura" : "9",
 	"chiusura" : "17"
 })
 orari.append({
-	"giorno": "Domenica",
+	"giorno": "Sabato",
 	"orari" : []
 })
 orari[6]["orari"].append({
