@@ -3,6 +3,7 @@ from flask_restplus import Api, Resource, reqparse
 from flask_marshmallow import Marshmallow, base_fields
 from marshmallow import post_dump
 import werkzeug
+werkzeug.cached_property = werkzeug.utils.cached_property
 import os
 import tempfile
 from flask import send_file

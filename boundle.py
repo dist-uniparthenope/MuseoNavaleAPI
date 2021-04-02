@@ -57,7 +57,7 @@ for i in range(0, len(_json)):
 		img_string = ""
 		audio_string = ""
 		audio = str(_json[i]['field_audio'])
-		print audio
+		print(audio)
 	
 		s =  (_json[i]['field_other_image']).split(",")
 		
@@ -66,7 +66,7 @@ for i in range(0, len(_json)):
 				audio_string = "audio/" + audio[29:]
 				response = requests.get("https://museonavale.uniparthenope.it/" + audio, stream=True)
 				if not response.ok:
-					print response
+					print(response)
 				for block in response.iter_content(1024):
 					if not block:
 						break
@@ -78,7 +78,7 @@ for i in range(0, len(_json)):
 				img_string = "images/" + img[29:]
 				response = requests.get("https://museonavale.uniparthenope.it/" + img, stream=True)
 				if not response.ok:
-					print response
+					print(response)
 				for block in response.iter_content(1024):
 					if not block:
 						break
@@ -88,10 +88,10 @@ for i in range(0, len(_json)):
 		
 		for j in range(1,len(s)):
 			img_temp = s[j]
-			print img_temp[30:]
+			print(img_temp[30:])
 		
 			url = "https://museonavale.uniparthenope.it/" + img_temp[2:]
-			print url
+			print(url)
 		
 			if(img_temp != ""):
 				img_data = requests.get(url).content
@@ -99,7 +99,7 @@ for i in range(0, len(_json)):
 				with open(path_images + "/" + img_temp[30:], "wb") as handler:
 					response = requests.get(url, stream=True)
 					if not response.ok:
-						print response
+						print(response)
 					for block in response.iter_content(1024):
 						if not block:
 							break
@@ -110,12 +110,12 @@ for i in range(0, len(_json)):
 				else:				
 					img_temp_string = img_temp_string + "images/" + img_temp[30:] + ","
 				
-			print img_temp_string
+			print(img_temp_string)
 			
 		data['items'].append({
 			'nid': _json[i]['nid'],
 			'title':str(_json[i]['title']),
-			'body':str(_json[i]['body']),
+			'body':str(_json[i]['body'].encode('utf-8')),
 			'field_other_image': img_temp_string,
 			'field_placing': _json[i]['field_placing'],
 	    		'field_model_value':_json[i]['field_model_value'],
@@ -132,101 +132,103 @@ for i in range(0, len(_json)):
 			'field_audio':audio_string
 		})
 
+                print("Room", _json[i]['field_room'])
+
 		if _json[i]['field_room'] != "":
-			if(_json[i]['field_room'] == "Stanza1"):
+			if(_json[i]['field_room'] == "Sala1"):
 				j = 0
 				cont1 = cont1 + 1
             
-			elif _json[i]['field_room'] == "Stanza2":
+			elif _json[i]['field_room'] == "Sala2":
                                 j = 1
 				cont2 = cont2 + 1
 				
-                        elif _json[i]['field_room'] == "Stanza3":
+                        elif _json[i]['field_room'] == "Sala3":
 				j = 2
 				cont3 = cont3 + 1
 				
-			elif(_json[i]['field_room'] == "Stanza4"):
+			elif(_json[i]['field_room'] == "Sala4"):
 				j = 3
 				cont4 = cont4 + 3
             
-			elif _json[i]['field_room'] == "Stanza5":
+			elif _json[i]['field_room'] == "Sala5":
                                 j = 4
 				cont5 = cont5 + 1
 				
-                        elif _json[i]['field_room'] == "Stanza6":
+                        elif _json[i]['field_room'] == "Sala6":
 				j = 5
 				cont6 = cont6 + 1
 				
-			elif(_json[i]['field_room'] == "Stanza7"):
+			elif(_json[i]['field_room'] == "Sala7"):
 				j = 6
 				cont7 = cont7 + 1
             
-			elif _json[i]['field_room'] == "Stanza8":
+			elif _json[i]['field_room'] == "Sala8":
                                 j = 7
 				cont8 = cont8 + 1
             
-                        elif _json[i]['field_room'] == "Stanza9":
+                        elif _json[i]['field_room'] == "Sala9":
 				j = 8
 				cont9 = cont9 + 1
 
 	                if cont1 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 			
 			if cont2 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 					
 			if cont3 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 					
 			if cont4 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 			
 			if cont5 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 					
 			if cont6 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 			
 			if cont7 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 			
 			if cont8 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 					
 			if cont9 == 1:
     			    rooms.append({	
-                        "hall": _json[i]['field_room'],
+                                "hall": _json[i]['field_room'],
 		                "items" : []
-					})
+			    })
 			
-		        rooms[j]["items"].append({
+                        rooms[j]["items"].append({
 	    		    'nid': _json[i]['nid'],
 	    		    'title':str(_json[i]['title']),
-	    		    'body':str(_json[i]['body']),
+	    		    'body':str(_json[i]['body'].encode('utf-8')),
 	    		    'field_other_image': img_temp_string,
 	    		    'field_placing': _json[i]['field_placing'],
 	    		    'field_model_value':_json[i]['field_model_value'],
@@ -276,7 +278,7 @@ for i in range(0, len(_json)):
 			tours[j]["items"].append({
 				'nid': _json[i]['nid'],
 				'title':str(_json[i]['title']),
-				'body':str(_json[i]['body']),
+				'body':str(_json[i]['body'].encode('utf-8')),
 				'field_other_image': img_temp_string,
 				'field_placing': _json[i]['field_placing'],
 		    		'field_model_value':_json[i]['field_model_value'],
@@ -382,5 +384,3 @@ for dirname, subdirs, files in os.walk('file/MuseoNavale/'):
 	for filename in files:
 		zf.write(os.path.join(dirname, filename))
 zf.close()
-
-import requests
