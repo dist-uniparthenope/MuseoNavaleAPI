@@ -41,7 +41,7 @@ def return_file():
 class version(Resource):
     def get(self):
         contents = ""
-        f = open('/Users/ciro/PycharmProjects/MuseoNavaleAPI/version.txt', 'r')
+        f = open('./version.txt', 'r')
         contents = f.read().splitlines()
         return {'version': contents[0]}
 

@@ -27,18 +27,20 @@ path_audio = "file/MuseoNavale/audio"
 
 try:
     os.mkdir(path_home)
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
     os.mkdir(path_images)
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
     os.mkdir(path_audio)
-except:
-    pass
+except Exception as e:
+    print(e)
 
 querystring = {"_format": "hal_json"}
 
