@@ -41,9 +41,9 @@ def return_file():
 class version(Resource):
     def get(self):
         contents = ""
-        f = open('version.txt', 'r')
+        f = open('/Users/ciro/PycharmProjects/MuseoNavaleAPI/version.txt', 'r')
         contents = f.read().splitlines()
-        return {'version' : contents[0]}
+        return {'version': contents[0]}
 
 if __name__ == '__main__':
     app.run()
